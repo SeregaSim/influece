@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define N 5
+
+int main()
+{
+    int array[5][5] = {
+        {-1, 2, 7, 41,2},
+        {2, 3, 27, 50,28},
+        {1, 4, 8, -2,7},  
+        {37, 23, 5, 12,5},
+        {2,18,-2,25,18}
+    };
+
+    for (int i = 0; i < 5; ++i) { 
+        for (int j = 0; j < 5; ++j) {
+            printf("%d\t", array[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+
+    int sum[5] = {0};
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 5; ++j) { 
+            if (array[i][j] < 0) {
+                sum[i] = 0; 
+                break;
+            } else {
+                sum[i] += array[i][j]; 
+            }
+        }
+    }
+    
+    printf("\n");
+
+    for (int i = 0; i < 5; ++i) {
+        if (sum[i] == 0) {
+            printf("Не удалось вычислить сумму из-за наличия отрицательного элемента в строке\n"); 
+        } else {
+            printf("Сумма: %d\n", sum[i]); 
+        }
+    }
+ int s,k,l,s1,t2,t1;  
+k=0;
+ s=0;
+ l=0;
+ for (int i=0; i<N; i++){
+ for (int j=0; j<N; j++){
+ if (array[i][j]>=0){
+     if(array[i][j]%2==0)
+ l+=array[i][j];
+ k++;
+ }
+ }
+ if (k==N){
+ l=l;
+ }
+ else {
+ l=0;
+ }
+ s=s+l;
+ k=0; 
+ }
+ s1=array[0][N-1];
+ for( int i=1; i<N; i++){
+ t1=t2=0;
+ for( int j=0; j<N-i; j++){
+ t1+=array[i+j][j];
+ t2+=array[j][i+j];
+ }
+ if(t1<s1) s1=t1;
+ if(t2<s1) s1=t2;
+ }
+ printf("Миннимум среди сумм  диогоналей параллельных главной диогонали %d\n",s1 );
+ return 0;
+        }
